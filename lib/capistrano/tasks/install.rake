@@ -3,12 +3,15 @@ require 'capistrano/setup'
 require 'capistrano-karaf'
 include Install
 
-namespace :upgrade do
+namespace :install do
+
+
 
 	task :mdpnodes_erfurt do
 		on roles(:mdp_erfurt) do
 			features_mdp= fetch :features_mdp
-			upgrade_all_features "#{fetch :feature_url}", features_mdp, "#{fetch :version}" 
+			add_features_url
+			install_all_features 
 		end	
 	end
 
@@ -40,10 +43,10 @@ namespace :upgrade do
 		end	
 	end
 
-	def upgrade_all_features(feature_url,features,version)
+	def install_all_features
+		features= fetch :features_mdp
 		features.each do |feature|
-		puts feature	
-		upgrade_feature(feature_url,feature,version)
+		feature_install feature
 		end
 	end
 
@@ -55,5 +58,13 @@ namespace :upgrade do
               	  :version => "1.16.0-SNAPSHOT",
                   :condition => :latest
              }])	
+	end
+
+	def add_features_url
+		features_urls = fetch :feature_urls
+		puts features_urls
+		features_urls.each do |url|
+		add_url url
+		end
 	end
 end

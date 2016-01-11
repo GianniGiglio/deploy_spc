@@ -5,10 +5,10 @@ require 'rexml/document'
 #doc = REXML::Document.new file
 #version_element = REXML::XPath.first(doc, '//project/version')
 set :stage, :local
-set :feature_url, "mvn:com.melexis.spc4mlx2.spc/spc-feature/1.16-SNAPSHOT/xml/features" 
-set :features_mdp, ['spc-engine', 'spc-settings']
+set :feature_urls, ['mvn:com.melexis.spc4mlx2.spc/spc-feature/1.17.0-SNAPSHOT/xml/features','mvn:com.melexis.spc4mlx2/spc4mlx2-repo/1.17.0-SNAPSHOT/xml/features']
+set :features_mdp, ['jackson-jaxrs-json','dependenciesmdp','spc4mlx2common','akkalib','akkautil','mdplib','agentnode','spc4mlx2statsgen','spc-engine']
 set :features_esb_colo, ['spc-settings']
-set :version, "1.16-SNAPSHOT"
+set :version, "1.17"
 server '192.168.33.11',
     user: 'smx',
     roles: %w{mdp_erfurt},
