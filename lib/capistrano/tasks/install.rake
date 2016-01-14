@@ -14,7 +14,7 @@ namespace :install do
 	end
 
 	task :mdpnodes do
-		on roles(:mdp_sensors,:mdp_sofia,:mdp_erfurt) do
+		on roles(:mdp_ieper,:mdp_sofia,:mdp_erfurt) do
 			features_mdp= fetch :features_mdp
 			add_features_url
 			install_all_features features_mdp
@@ -30,7 +30,7 @@ namespace :install do
 	end
 
 	task :uninstall do
-			on roles(:mdp_sensors,:mdp_sofia,:mdp_erfurt,:supervisor,:esb_colo) do
+			on roles(:mdp_ieper,:mdp_sofia,:mdp_erfurt,:supervisor,:esb_colo) do
 			uninstall_all_features fetch :features_supervisor
 			uninstall_all_features fetch :features_mdp
 			uninstall_all_features fetch :features_colo
@@ -38,7 +38,7 @@ namespace :install do
 	end	
 
 	task :removeurl do
-			on roles(:mdp_sensors,:mdp_sofia,:mdp_erfurt,:supervisor,:esb_colo) do
+			on roles(:mdp_ieper,:mdp_sofia,:mdp_erfurt,:supervisor,:esb_colo) do
 			remove_artifact_urls "com.melexis.spc4mlx2", "spc4mlx2-repo"
 		end
 	end	
