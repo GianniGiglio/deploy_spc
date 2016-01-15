@@ -7,7 +7,7 @@ namespace :verify do
 	task :mdp do
       on roles(:mdp_ieper,:mdp_sofia,:mdp_erfurt) do |host|
       	if all_bundles_started? fetch :mdp_bundles
-            puts "All expected bundles are correctly installed on host: " + host 
+            puts "All expected bundles are correctly installed on host: "  
       	end
       end
     end
@@ -15,7 +15,7 @@ namespace :verify do
     task :colo do
       on roles(:esb_colo) do |host|
       	if all_bundles_started? fetch :colo_bundles
-  			puts "All expected bundles are correctly installed on host: " + host 
+  			puts "All expected bundles are correctly installed on host: "  
       	end
       end
   	end
@@ -23,7 +23,7 @@ namespace :verify do
 	task :supervisor do
       on roles(:supervisor) do |host|
       if all_bundles_started? fetch :supervisor_bundles
-          puts "All expected bundles are correctly installed on host: " + host 
+          puts "All expected bundles are correctly installed on host: "  
       end
      end  
     end
